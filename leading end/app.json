@@ -1,0 +1,25 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/courseDetail/courseDetail",
+        "pages/myCourse/myCourse",
+        "pages/openCourse/openCourse",
+        "pages/select/select",
+        "pages/user/user",
+        "pages/test/test",
+        "pages/author/author",
+        "pages/showScore/showScore",
+        "pages/teacher/teacher",
+        "pages/type_in/type_in",
+        "pages/myteach/myteach",
+        "pages/score/score"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#116ec0",
+        "navigationBarTitleText": "上海大学选课系统",
+        "navigationBarTextStyle": "white"
+    },
+    "sitemapLocation": "sitemap.json"
+}

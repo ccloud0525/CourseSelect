@@ -1,0 +1,39 @@
+
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
+  <view class="word">我的成绩</view>
+  <view class="waveWrapperInner bgTop">
+    <image class="wave waveTop" src="../../img/wave-top.png"></image>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <image class="wave waveBottom" src="../../img/wave-bot.png"></image>
+  </view>
+</view>
+
+<scroll-view scroll-y="true" class="scroll" refresher-enabled="true" bindrefresherrefresh="refresh" bindrefresherabort="refreshAbort">
+<block wx:for="{{courses}}">
+  <van-cell  
+    icon="label-o" 
+    use-label-slot="true" 
+    size="large" 
+    >
+    <view slot="title">
+      <view class="titleview">
+        <view>
+          <text> {{item.cname}} </text>
+        </view>
+      </view>
+    </view>
+
+    <view slot="label" 
+      data-courseName="{{item.cname}}"
+      data-courseid="{{item.cid}}"
+      data-index="{{index}}"
+      bindtap="into_coursePage"
+      class="detail">
+      <van-icon name="manager" size="25rpx"/>
+      <text> 成绩 : {{item.score}}\n </text>
+    </view>
+    
+  </van-cell>
+</block>
+</scroll-view>

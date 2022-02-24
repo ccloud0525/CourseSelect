@@ -1,0 +1,17 @@
+
+<!--pages/user/user.wxml-->
+<view class="today">
+  <view class="info">
+    <view class="temp">  {{today.wendu}}℃</view>
+    <view class="weather">{{today.todayInfo.type}} {{today.todayInfo.fengxiang}}</view>
+    <view >友情提示：{{today.ganmao}}</view>
+    <view class="city">{{city}}</view>
+  </view>
+</view>
+
+<van-cell size="large" is-link icon="eye" title="我教的课" bind:click="myteach"/>
+<van-cell size="large" is-link icon="bars" title="我要开课" bind:click="open"/>
+<van-cell size="large" is-link icon="bars" title="成绩录入" bind:click="type_in"/>
+<van-cell size="large" is-link icon="bars" title="课程查询" bind:click="query"/>
+<van-cell size="large" is-link icon="star" title="创作团队信息" bind:click	='author' />
+

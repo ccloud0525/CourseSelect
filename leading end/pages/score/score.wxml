@@ -1,0 +1,23 @@
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
+  <view class="word">成绩录入</view>
+  <view class="waveWrapperInner bgTop">
+    <image class="wave waveTop" src="../../img/wave-top.png"></image>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <image class="wave waveBottom" src="../../img/wave-bot.png"></image>
+  </view>
+</view>
+
+
+
+
+<view wx:for="{{students}}">
+  <text>{{item.username}}:</text>
+  <text>当前成绩：{{item.score}}</text>
+  <input id="{{item.uid}}"   bindinput="setScore" placeholder="请输入成绩"></input>
+
+</view>
+
+<view class="btn">
+  <van-button  size="normal" color="#3b87dd" disabled="{{disable}}" bind:click="submit">提交</van-button>
+</view>
