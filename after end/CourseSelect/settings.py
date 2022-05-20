@@ -81,12 +81,23 @@ DATABASES = {
         'NAME': 'courseselect',
         'HOST': '127.0.0.1',
         'USER': 'root',
-        'PASSWORD': 'Jj~2001525',
+        'PASSWORD': '020525',
         'PORT': 3306
 
     }
 }
-
+# DATABASES = {
+# 'default': {
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'postgres', #数据库名
+#         'USER': 'andy', #用户名
+#         'PASSWORD': 'Jj~2001525', #密码
+#         'HOST': '123.60.46.143',#虚拟机ip
+#         'PORT': 26000 #openGauss数据口的端口
+#     }
+#
+# }
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 

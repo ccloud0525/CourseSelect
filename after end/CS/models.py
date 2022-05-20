@@ -10,20 +10,69 @@ class User(models.Model):
 
 
 class List(models.Model):
+    id = models.AutoField(primary_key=True)
     cid = models.CharField(max_length=20)
     uid = models.CharField(max_length=8)
-    username=models.CharField(max_length=20,default="未命名")
-    score = models.CharField(max_length=5)
-    cname = models.CharField(max_length=20,default="数据结构")
+    username = models.CharField(max_length=20,default='')
+    xq = models.CharField(max_length=20)
+    tid = models.CharField(max_length=20)
+    score = models.IntegerField(default=0)
+    cname = models.CharField(max_length=20)
 
+class CourseTemplate(models.Model):
+    cid = models.CharField(max_length=20,primary_key=True)
+    cname = models.CharField(max_length=20)
+    xf = models.CharField(max_length=4)
+    xq = models.CharField(max_length=20)
 
 class Course(models.Model):
-    cid = models.CharField(max_length=20, primary_key=True)
+    id = models.AutoField(primary_key=True)
+    cid = models.CharField(max_length=20)
     cname = models.CharField(max_length=20)
     xf = models.CharField(max_length=4)
     address = models.CharField(max_length=20)
     time = models.CharField(max_length=15)
     desc = models.CharField(max_length=50)
     teacher = models.CharField(max_length=20)
-    tid=models.CharField(max_length=20,default=000)
-    volumn = models.IntegerField()
+    tid = models.CharField(max_length=20)
+    xq = models.CharField(max_length=20)
+    volumn = models.IntegerField(default=0)
+    num=models.IntegerField(default=45)
+
+class Score(models.Model):
+    id = models.AutoField(primary_key=True)
+    cid = models.CharField(max_length=20)
+    cname = models.CharField(max_length=20)
+    uid = models.CharField(max_length=8)
+    repeat = models.BooleanField(default=False)
+    username = models.CharField(max_length=20, default='')
+    score = models.IntegerField()
+    xf = models.CharField(max_length=4)
+    grade = models.FloatField()
+
+class sScore(models.Model):
+    id = models.AutoField(primary_key=True)
+    cid = models.CharField(max_length=20)
+    cname = models.CharField(max_length=20)
+    uid = models.CharField(max_length=8)
+    username = models.CharField(max_length=20, default='')
+    score = models.IntegerField()
+    tid = models.CharField(max_length=20)
+    xf = models.CharField(max_length=4)
+    grade = models.FloatField()
+    xq = models.CharField(max_length=20)
+
+class sGPA(models.Model):
+    id = models.AutoField(primary_key=True)
+    uid = models.CharField(max_length=8)
+    username = models.CharField(max_length=20, default='')
+    txf = txf=models.CharField(max_length=8,default='')
+    gpa = models.FloatField()
+    xq = models.CharField(max_length=20)
+
+class GPA(models.Model):
+    id = models.AutoField(primary_key=True)
+    uid = models.CharField(max_length=8)
+    username = models.CharField(max_length=20, default='')
+    txf=models.CharField(max_length=8,default='')
+    gpa = models.FloatField()
