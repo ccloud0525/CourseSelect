@@ -41,14 +41,18 @@ Page({
     wx.showToast({
       title: '退选成功',
     })*/
-    let courseid = e.target.id
+    let courseid = e.target.dataset.id
+    let xq = e.target.dataset.xq
+    let tid = e.target.dataset.tid
 
     var that = this
     wx.request({
       url: 'http://127.0.0.1:8000/quit/',
       data: {
         userid: app.globalData.uid,
-        courseid: courseid
+        courseid: courseid,
+        tid:tid,
+        xq:xq
       },
       method: 'POST',
       success: function (res) {
@@ -68,6 +72,8 @@ Page({
   into_coursePage: function (e) {
     console.log(e.currentTarget.dataset.courseid)
     app.globalData.courseid = e.currentTarget.dataset.courseid
+    app.globalData.xq=e.currentTarget.dataset.xq
+    app.globalData.tid=e.currentTarget.dataset.tid
     wx.navigateTo({
       url: '../courseDetail/courseDetail',
     })
@@ -91,63 +97,52 @@ Page({
       method: 'POST',
       success: function (res) {
 
-        var coursesid = res.data
-
-        wx.request({
-          url: 'http://127.0.0.1:8000/addMyCourses/',
-          data: {
-            cids: coursesid
-          },
-          method: 'POST',
-          success: function (res) {
-
-            that.setData({
-              courses: res.data
-
-            })
-          }
-        })
-      }
-    })
-
-  },
-
-  addMyCourses: function (cid) {
-    /*
-    var temp = []
-    var prom = []
-    for (var i = 0; i < coursesName.length; i++) {
-      var p = new Promise((resolve,reject)=>{
-        courseCollection.where({
-          courseName: coursesName[i]
-        }).get().then(res => {
-          resolve(res.data[0])
-        })
-      })
-      prom.push(p)
-    }
-    Promise.all(prom).then(res=>{
-      this.setData({
-        courses:res
-      })
-    })
-    */
-    var that = this
-    wx.request({
-      url: 'http://127.0.0.1:8000/addMyCourses/',
-      data: {
-        cids: cid
-      },
-      method: 'POST',
-      success: function (res) {
-
         that.setData({
-          courses: res.data
-
+          courses:res.data
         })
+
+       
       }
     })
+
   },
+
+  // addMyCourses: function (cid) {
+  //   /*
+  //   var temp = []
+  //   var prom = []
+  //   for (var i = 0; i < coursesName.length; i++) {
+  //     var p = new Promise((resolve,reject)=>{
+  //       courseCollection.where({
+  //         courseName: coursesName[i]
+  //       }).get().then(res => {
+  //         resolve(res.data[0])
+  //       })
+  //     })
+  //     prom.push(p)
+  //   }
+  //   Promise.all(prom).then(res=>{
+  //     this.setData({
+  //       courses:res
+  //     })
+  //   })
+  //   */
+  //   var that = this
+  //   wx.request({
+  //     url: 'http://127.0.0.1:8000/addMyCourses/',
+  //     data: {
+  //       cids: cid
+  //     },
+  //     method: 'POST',
+  //     success: function (res) {
+
+  //       that.setData({
+  //         courses: res.data
+
+  //       })
+  //     }
+  //   })
+  // },
 
 
   /**

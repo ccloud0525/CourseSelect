@@ -27,6 +27,7 @@
     <view slot="label" 
       data-courseName="{{item.cname}}"
       data-courseid="{{item.cid}}"
+      data-xq="{{item.xq}}"
       data-index="{{index}}"
       bindtap="into_coursePage"
       class="detail">
@@ -40,8 +41,9 @@
       <text> 剩余名额 : {{item.volumn}}</text>
     </view>
     <view class="btn">
-            <van-button id="{{item.cid}}" size="normal" color="#3b87dd" disabled="{{disable}}" bind:click="delete">删课</van-button>
-          </view>
+          <van-button round type="warning" data-id="{{item.cid}}"  data-xq="{{item.xq}}"disabled="{{disable}}" bind:click="delete">删课</van-button>
+          <van-button round type="info" data-id="{{item.cid}}"  data-xq="{{item.xq}}" disabled="{{disable}}" bind:click="turnToRoll">名单</van-button>
+    </view>
   </van-cell>
 </block>
 </scroll-view>

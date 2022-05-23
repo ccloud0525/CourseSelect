@@ -29,7 +29,25 @@
         </view>
       
     </van-cell>
+    <van-cell icon="label-o" use-label-slot="true" size="large">
+        <view slot="title">
+            <view class="titleview">
+                <view>
+                    <text>高睿宁 </text>
+                </view>
+            </view>
+        </view>
 
+        <view slot="label" class="detail">
+            <van-icon name="star" size="25rpx" />
+            <text> 工号：19120179\n </text>
+            <van-icon name="manager" size="25rpx" />
+            <text> 技术负责：前端开发\n </text>
+            <van-icon name="award" size="25rpx" />
+            <text> 使用工具 : 微信开发者工具\n</text>
+        </view>
+      
+    </van-cell>
     <van-cell icon="label-o" use-label-slot="true" size="large">
         <view slot="title">
             <view class="titleview">

@@ -78,11 +78,11 @@ Page({
     var password = this.data.password
     var identity = this.data.identity
     var page = this
-    if (identity == "teacher") {
+    if (identity == "teacher"|| identity == "admin") {
       this.data.disable = true
       wx.showModal({
         title: '提示',
-        content: '教师不可以注册',
+        content: '教师和管理员不可以注册',
       })
       return
     }
@@ -153,9 +153,14 @@ Page({
                 url: '/pages/user/user',
               })
             }
-            else{
+            else if(identity == 'teacher') { 
               wx.redirectTo({
                 url: '/pages/teacher/teacher',
+              })
+            }
+            else { 
+              wx.redirectTo({
+                url: '/pages/admin/admin',
               })
             }
           } else {

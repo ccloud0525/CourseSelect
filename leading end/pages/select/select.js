@@ -14,7 +14,10 @@ Page({
     time: "",
     teacher: "",
     cid: "",
-    cname: ""
+    cname: "",
+    xq:"",
+    address:"",
+    tid:""
   },
   notify: function () {
     wx.showModal({
@@ -29,6 +32,16 @@ Page({
   setCid: function (e) {
     this.setData({
       cid: e.detail
+    })
+  },
+  setXq: function (e) {
+    this.setData({
+      xq: e.detail
+    })
+  },
+  setAddress: function (e) {
+    this.setData({
+      address: e.detail
     })
   },
   setCname: function (e) {
@@ -51,6 +64,11 @@ Page({
       teacher: e.detail
     })
   },
+  setTid: function (e) {
+    this.setData({
+      tid: e.detail
+    })
+  },
   /**
    * 课程查询 
    */
@@ -59,7 +77,10 @@ Page({
     var teacher = this.data.teacher
     var xf = this.data.xf
     var cid = this.data.cid
+    var tid = this.data.tid
     var cname = this.data.cname
+    var xq = this.data.xq
+    var address = this.data.address
     var that = this
     wx.request({
       url: 'http://127.0.0.1:8000/Search/',
@@ -68,7 +89,9 @@ Page({
         cname: cname,
         xf: xf,
         time: time,
-        teacher: teacher
+        teacher: teacher,
+        xq:xq,
+        address:address
       },
       method: "POST",
       success: function (res) {
@@ -93,10 +116,12 @@ Page({
    * 选课
    */
   select: function (e) {
-    if (app.globalData.identity == 'teacher') {
+    if (app.globalData.identity != 'student') {
       this.notify()
     } else {
-      let courseid = e.target.id
+      let courseid = e.target.dataset.id
+      let tid = e.target.dataset.tid
+      let xq = e.target.dataset.xq
 
       console.log(courseid)
       console.log(app.globalData.username)
@@ -105,6 +130,8 @@ Page({
         data: {
           uid: app.globalData.uid,
           cid: courseid,
+          tid:tid,
+          xq:xq
 
         },
         method: 'POST',

@@ -1,6 +1,9 @@
 
-<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
-  <view class="word">我的成绩</view>
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}};display: flex;justify-content: space-between;'>
+  <view class="word" bindtap="goBack">返回主页</view>
+  <navigator class="word" url="/pages/visuallyShowScore/visuallyShowScore">
+    <text style="color:rgb(235, 176, 157);">切换视图</text>
+  </navigator>
   <view class="waveWrapperInner bgTop">
     <image class="wave waveTop" src="../../img/wave-top.png"></image>
   </view>
@@ -28,11 +31,11 @@
       data-courseName="{{item.cname}}"
       data-courseid="{{item.cid}}"
       data-index="{{index}}"
-      bindtap="into_coursePage"
       class="detail">
       <van-icon name="manager" size="25rpx"/>
       <text> 成绩 : {{item.score}}\n </text>
     </view>
+    
     
   </van-cell>
 </block>

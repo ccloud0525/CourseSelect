@@ -1,4 +1,6 @@
 /* pages/select/select.wxss */
+
+
 .titleview {
   font-size: 47rpx;
   display: flex;
@@ -8,11 +10,13 @@
   padding:7rpx;
   font-size: 27rpx;
 }
-.btn {
-  padding:5rpx;
-  display: flex;
-  margin-bottom: 50rpx;
-  margin-left: 140rpx;
+.btn{
+  text-align: center;
+  margin: 10rpx;
+  padding: 10rpx;
+}
+.reg,.log{
+  margin: 20rpx;
 }
 .titlescore {
   margin-right: 10rpx;
@@ -41,7 +45,7 @@ page {
 .title-img {
   position: absolute;
   width: 280rpx;
-  height: 280rpx;
+  height: 240rpx;
   z-index: 999;
   left: 30%
 }
@@ -115,7 +119,7 @@ page {
   position: relative;
   height: 150rpx;
   width: 100%;
-  background: #116ec0;
+  background: #116ec0
 }
 
 .waveWrapperInner {
@@ -156,7 +160,14 @@ page {
 .waveAnimation .waveTop {
   animation: move_wave 30s linear infinite;
 }
-
+.btn{
+  text-align: center;
+  margin: 10rpx;
+  padding: 10rpx;
+}
+.reg,.log{
+  margin: 20rpx;
+}
 .waveAnimation .waveMiddle {
   animation: move_wave 24s linear infinite;
 }

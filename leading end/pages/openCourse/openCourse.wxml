@@ -14,36 +14,50 @@
 <van-cell-group class="botton">
   <van-field
     size="large"
-    value="{{ cname }}"
+    value="{{ cid }}"
     required
-    label="课程名称"
-    placeholder="请输入课程名称"
-    bind:input="setName"
+    label="课程号:"
+    left-icon="fire"
+    placeholder="请输入课程号"
+    bind:input="setCid"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ xq }}"
+    required
+    label="学期:"
+    left-icon="clock"
+    placeholder="请输入学期"
+    bind:input="setXq"
     clearable	="true"
    />
   <van-field
     size="large"
     value="{{ time }}"
     required
-    label="课程时间"
+    left-icon="clock-o"
+    label="课程时间:"
     placeholder="请输入星期几 第几节课"
     maxlength	="20"
     bind:input="setTime"
     clearable	="true"
    />
-  <van-field
+   <van-field
     size="large"
-    label = "课程学分"
+    value="{{ address}}"
     required
-    value="{{ xf }}"
-    placeholder="请输入课程学分"
-    bind:input="setXuefen"
-    type= "number"
+    label="上课地点:"
+    left-icon="location"
+    placeholder="请输入上课地点"
+    maxlength	="20"
+    bind:input="setAddress"
     clearable	="true"
    />
   <van-field
     size="large"
-    label = "班级人数"
+    label = "班级人数:"
+    left-icon="friends"
     required
     value="{{ volumn }}"
     placeholder="请输入班级人数"
@@ -55,7 +69,8 @@
   <van-field
     size="large"
     value="{{ desc }}"
-    label="课程简介"
+    label="课程简介:"
+    left-icon="column"
     type="textarea"
     placeholder="请输入课程简介"
     autosize

@@ -110,18 +110,20 @@ Page({
     })
   },
 
+
   showScore: function () {
     if (this.data.identity == "teacher") {
       page.notify()
     } else {
-      wx.navigateTo({
+      //注意，跳转到tabbar页面，不能用navigateTo，一定要用switchTab
+      wx.switchTab({
         url: '/pages/showScore/showScore',
       })
     }
   },
   Readme: function () {
     wx.setClipboardData({
-      data: 'https://github.com/ccloud0525/Alice',
+      data: 'https://github.com/ccloud0525/CourseSelect',
       success(res) {
         wx.getClipboardData({
           success(res) {

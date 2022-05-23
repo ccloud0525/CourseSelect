@@ -11,13 +11,43 @@
 
 
 
-<view wx:for="{{students}}">
-  <text>{{item.username}}:</text>
-  <text>当前成绩：{{item.score}}</text>
-  <input id="{{item.uid}}"   bindinput="setScore" placeholder="请输入成绩"></input>
+<scroll-view scroll-y="true" class="scroll" refresher-enabled="true" bindrefresherrefresh="refresh" bindrefresherabort="refreshAbort">
+  <block wx:for="{{students}}">
+    <van-cell icon="user-o" use-label-slot="true" size="large">
 
-</view>
+      <view slot="title">
+        <view class="titleview">
+          <view>
+            <text> {{item.username}} </text>
+          </view>
+        </view>
+      </view>
 
-<view class="btn">
-  <van-button  size="normal" color="#3b87dd" disabled="{{disable}}" bind:click="submit">提交</van-button>
+      <view slot="label" class="detail">
+        <van-icon name="user-circle-o" size="25rpx" />
+        <text> 学号 : {{item.uid}}\n</text>
+        <van-field
+    size="25rpx"
+    data-tid="{{item.tid}}"
+    data-cid="{{item.cid}}"
+    data-xq="{{item.xq}}"
+    data-uid="{{item.uid}}"
+    value="{{ item.score}}"
+    left-icon="diamond"
+    label="当前成绩:"
+    placeholder="请输入分数"
+    bind:blur="setScore"
+    input-align="center"
+    clearable	="true"
+   />
+     
+      </view>
+
+
+    </van-cell>
+  </block>
+  <view class="btn">
+  <van-button  size="large" color="#3b87dd"  bind:click="submit">提交</van-button>
 </view>
+</scroll-view>
+

@@ -1,25 +1,67 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/logs/logs",
-        "pages/courseDetail/courseDetail",
-        "pages/myCourse/myCourse",
-        "pages/openCourse/openCourse",
-        "pages/select/select",
-        "pages/user/user",
-        "pages/test/test",
-        "pages/author/author",
-        "pages/showScore/showScore",
-        "pages/teacher/teacher",
-        "pages/type_in/type_in",
-        "pages/myteach/myteach",
-        "pages/score/score"
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#116ec0",
-        "navigationBarTitleText": "上海大学选课系统",
-        "navigationBarTextStyle": "white"
+  "pages": [
+      "pages/index/index",
+      "pages/logs/logs",
+      "pages/courseDetail/courseDetail",
+      "pages/myCourse/myCourse",
+      "pages/openCourse/openCourse",
+      "pages/select/select",
+      "pages/user/user",
+      "pages/test/test",
+      "pages/author/author",
+      "pages/showScore/showScore",
+      "pages/teacher/teacher",
+      "pages/type_in/type_in",
+      "pages/myteach/myteach",
+      "pages/score/score",
+      "pages/rollOfCertainCourse/rollOfCertainCourse",
+      "pages/visuallyShowScore/visuallyShowScore",
+      "pages/showSGPA/showSGPA",
+      "pages/showRank/showRank",
+      "pages/coursemanage/coursemanage",
+      "pages/admin/admin",
+      "pages/admakeCourse/admakeCourse",
+      "pages/adopenCourse/adopenCourse",
+      "pages/toDelete/toDelete",
+      "pages/grade/grade",
+      "pages/manage/manage",
+      "pages/change/change"
+      
+
+  ],
+  "window": {
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#116ec0",
+      "navigationBarTitleText": "上海大学教务管理系统",
+      "navigationBarTextStyle": "white"
+  },
+  "plugins": {
+      "echarts": {
+        "version": "1.0.3",
+        "provider": "wx1db9e5ab1149ea03"
+      }
     },
-    "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/showScore/showScore",
+      "text": "学期成绩",
+      "iconPath": "img/icon-test_4.png",
+      "selectedIconPath": "img/icon-test_4.png"
+    },
+    {
+      "pagePath": "pages/showSGPA/showSGPA",
+      "text": "绩点走势",
+      "iconPath": "img/icon-test_4.png",
+      "selectedIconPath": "img/icon-test_4.png"
+    },
+    {
+      "pagePath": "pages/showRank/showRank",
+      "text": "总绩排名",
+      "iconPath": "img/icon-test_4.png",
+      "selectedIconPath": "img/icon-test_4.png"
+    }
+  ]
+  }
+
 }

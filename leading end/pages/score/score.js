@@ -8,16 +8,16 @@ Page({
    */
   data: {
     students: [],
-    cid: app.globalData.courseid,
+    cid: "",
+    tid:"",
+    xq:"",
     ss:[]
   },
 
-  /**
-   * 退选课程
-   */
+  
   setScore: function (e) {
     var s=this.data.ss
-    s.push({uid:e.target.id,score:e.detail.value})
+    s.push({uid:e.target.dataset.uid,cid:e.target.dataset.cid,xq:e.target.dataset.xq,tid:e.target.dataset.tid,score:e.detail.value})
     this.setData({
       ss:s
     })
@@ -27,15 +27,14 @@ Page({
 
   },
 
-  submit: function () {
+  submit: function (e) {
     var that = this
    
     
     wx.request({
       url: 'http://127.0.0.1:8000/submit/',
       data: {
-        courseid: app.globalData.courseid,
-        students: this.data.ss
+        ss:this.data.ss
       },
       method: 'POST',
     
@@ -50,8 +49,14 @@ Page({
     })
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
     var that = this
+   
+    this.setData({
+      cid:app.globalData.courseid,
+      tid:app.globalData.tid,
+      xq:app.globalData.xq
+    })
     /*
     wx.request({
       url: 'http://127.0.0.1:8000/getMyCourses/',
@@ -83,7 +88,9 @@ Page({
     wx.request({
       url: 'http://127.0.0.1:8000/type_in/',
       data: {
-        cid: app.globalData.courseid
+        cid: this.data.cid,
+        tid:this.data.tid,
+        xq:this.data.xq
       },
       method: 'POST',
       success: function (res) {

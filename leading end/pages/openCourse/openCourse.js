@@ -28,7 +28,10 @@ Page({
     time: "",
     volumn: "",
     xf: "",
-    desc: ""
+    desc: "",
+    address:"",
+    cid:"",
+    xq:""
 
   },
   
@@ -43,9 +46,21 @@ Page({
     this.setData({ time: e.detail })
     console.log(this.data.time)
   },
+  setAddress: function (e) {
+    this.setData({ address: e.detail })
+    console.log(this.data.address)
+  },
   setXuefen: function (e) {
     this.setData({ xf: e.detail })
     console.log(this.data.xf)
+  },
+  setXq: function (e) {
+    this.setData({ xq: e.detail })
+    console.log(this.data.xq)
+  },
+  setCid: function (e) {
+    this.setData({ cid: e.detail })
+    console.log(this.data.cid)
   },
   setNum: function (e) {
     this.setData({ volumn: e.detail })
@@ -65,7 +80,11 @@ Page({
     var num = this.data.volumn
     var desc = this.data.desc
     var teacherName = app.globalData.username
-    if(courseName==""||time==""||xuefen==""||num==""){
+    var address=this.data.address
+    var cid = this.data.cid
+    var xq=this.data.xq
+    
+    if(address==""||cid==""||time==""||xq==""||num==""){
       wx.showModal({
         title: '开课失败',
         content: '请填写完整带*号的内容',
@@ -75,13 +94,14 @@ Page({
       wx.request({
         url: 'http://127.0.0.1:8000/Open/',
         data:{
-          cname:courseName,
           time:time,
-          xf:xuefen,
           teacher:teacherName,
           desc:desc,
           volumn:num,
-          tid:app.globalData.uid
+          tid:app.globalData.uid,
+          address:address,
+          cid:cid,
+          xq:xq
         },
         method:'POST',
         success:function(res) {

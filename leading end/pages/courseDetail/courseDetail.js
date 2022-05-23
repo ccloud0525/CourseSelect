@@ -12,7 +12,11 @@ Component({
     xf: "",
     teacher: "",
     time: "",
-    desc: ""
+    desc: "",
+    xq:"",
+    tid:"",
+    cid:"",
+    address:""
   },
 
   methods: {
@@ -38,7 +42,9 @@ Component({
       wx.request({
         url: 'http://127.0.0.1:8000/Csonload/',
         data: {
-          cid:app.globalData.courseid
+          cid:app.globalData.courseid,
+          tid:app.globalData.tid,
+          xq:app.globalData.xq
         },
         method: 'POST',
         success: function (res) {
@@ -48,7 +54,11 @@ Component({
             xf:res.data[0]['xf'],
             teacher:res.data[0]['teacher'],
             desc:res.data[0]['desc'],
-            coursename:res.data[0]['cname']
+            coursename:res.data[0]['cname'],
+            xq:res.data[0]['xq'],
+            address:res.data[0]['address'],
+            
+
 
           })
         }

@@ -8,8 +8,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    courses: [],
-    uid: app.globalData.uid
+    courses: [
+    //  {cid:1,cname:"数学",teacher:"老师A",time:"三1-2",xf:4,volumn:50},
+    //  {cid:2,cname:"语文",teacher:"老师B",time:"三1-2",xf:4,volumn:50},
+    //  {cid:3,cname:"英语",teacher:"老师C",time:"三1-2",xf:4,volumn:50},
+    //  {cid:4,cname:"化学",teacher:"老师D",time:"三1-2",xf:4,volumn:50},
+    ],
+
   },
  
   /**
@@ -25,7 +30,9 @@ Page({
           wx.request({
             url: 'http://127.0.0.1:8000/delete/',
             data:{
-              cid:e.target.id
+              cid:e.target.dataset.id,
+              tid:app.globalData.uid,
+              xq:e.target.dataset.xq
             },
             method:'POST',
             success:function (res) {
@@ -43,11 +50,25 @@ Page({
   },
   
   /**
+   *  查看该课程选课名单
+   */
+  turnToRoll(e){
+    var tid=app.globalData.uid
+    wx.navigateTo({
+      //点击”名单“按钮，跳转到课程名单页面
+     
+      url: `/pages/rollOfCertainCourse/rollOfCertainCourse?cid=${e.target.dataset.id}&tid=${tid}&xq=${e.target.dataset.xq}`
+    })
+  },
+
+  /**
    * 跳转到课程详细页面
    */
   into_coursePage: function (e) {
-    console.log(e.currentTarget.dataset.courseid)
-    app.globalData.courseid = e.currentTarget.dataset.courseid
+  
+    app.globalData.tid=app.globalData.uid
+    app.globalData.xq=e.currentTarget.dataset.xq
+    app.globalData.courseid=e.currentTarget.dataset.courseid
     wx.navigateTo({
       url: '../courseDetail/courseDetail',
     })

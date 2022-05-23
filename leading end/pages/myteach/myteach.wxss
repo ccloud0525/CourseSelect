@@ -9,10 +9,11 @@
     font-size: 27rpx;
   }
   .btn {
-    padding:5rpx;
-    display: flex;
-    margin-bottom: 50rpx;
-    margin-left: 140rpx;
+    padding:12rpx;
+    display: flex; 
+    margin-left: 50rpx;
+    flex-direction: row;
+    justify-content: space-around;
   }
   .titlescore {
     margin-right: 10rpx;

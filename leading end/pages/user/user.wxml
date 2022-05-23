@@ -11,7 +11,7 @@
 
 <van-cell size="large" is-link icon="eye" title="我要选课" bind:click="select"/>
 <van-cell size="large" is-link icon="underway" title="我的课程" bind:click="showCourse"/>
-<van-cell size="large" is-link icon="star" title="成绩查询" bind:click	='showScore' />
+<van-cell size="large" is-link icon="gem" title="成绩查询" bind:click	='showScore' />
 <van-cell size="large" is-link icon="star" title="创作团队信息" bind:click	='author' />
-<van-cell size="large" is-link icon="star" title="关于" bind:click	='Readme' />
+<van-cell size="large" is-link icon="like" title="关于" bind:click	='Readme' />
 

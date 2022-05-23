@@ -17,9 +17,12 @@ Page({
    * 成绩录入
    */
   type_in:function (e) {
-    app.globalData.courseid=e.target.id
+    let tid=app.globalData.uid
+    app.globalData.courseid=e.target.dataset.id
+    app.globalData.tid=app.globalData.uid
+    app.globalData.xq=e.target.dataset.xq
     wx.navigateTo({
-      url: '/pages/score/score',
+      url: `/pages/score/score`
     })
   },
   
@@ -27,8 +30,9 @@ Page({
    * 跳转到课程详细页面
    */
   into_coursePage: function (e) {
-    console.log(e.currentTarget.dataset.courseid)
-    app.globalData.courseid = e.currentTarget.dataset.courseid
+    app.globalData.tid=app.globalData.uid
+    app.globalData.xq=e.currentTarget.dataset.xq
+    app.globalData.courseid=e.currentTarget.dataset.courseid
     wx.navigateTo({
       url: '../courseDetail/courseDetail',
     })

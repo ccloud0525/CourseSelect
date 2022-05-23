@@ -27,20 +27,26 @@
     <view slot="label" 
       data-courseName="{{item.cname}}"
       data-courseid="{{item.cid}}"
+      data-xq="{{item.xq}}"
+      data-tid="{{item.tid}}"
       data-index="{{index}}"
       bindtap="into_coursePage"
       class="detail">
       <van-icon name="manager" size="25rpx"/>
       <text> 授课老师 : {{item.teacher}}\n </text>
       <van-icon name="clock" size="25rpx"/>
+      <text> 学期: {{item.xq}}\n </text>
+      <van-icon name="clock-o" size="25rpx"/>
       <text> 上课时间 : {{item.time}}\n</text>
       <van-icon name="award" size="25rpx"/>
+      <text>上课地点: {{item.address}}\n </text>
+      <van-icon name="clock" size="25rpx"/>
       <text> 课程学分 : {{item.xf}}\n</text>
       <van-icon name="friends" size="25rpx"/>
       <text> 剩余名额 : {{item.volumn}}</text>
     </view>
     <view class="btn">
-            <van-button id="{{item.cid}}" size="normal" color="#3b87dd" disabled="{{disable}}" bind:click="quit">退选</van-button>
+            <van-button data-id="{{item.cid}}"  data-tid="{{item.tid}}"  data-xq="{{item.xq}}" size="normal" color="#3b87dd" disabled="{{disable}}" bind:click="quit">退选</van-button>
           </view>
   </van-cell>
 </block>
