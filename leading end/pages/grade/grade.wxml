@@ -1,0 +1,124 @@
+<!--pages/add/add.wxml-->
+
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
+<view class="word">成绩管理</view>
+
+  <view class="waveWrapperInner bgTop">
+    <image class="wave waveTop" src="../../img/wave-top.png"></image>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <image class="wave waveBottom" src="../../img/wave-bot.png"></image>
+  </view>
+</view>
+
+
+<van-cell-group class="botton">
+    <van-field
+    size="large"
+    value="{{ username }}"
+    label="学生姓名:"
+    left-icon="user-o"
+    placeholder="请输入学生姓名"
+    bind:input="setUsername"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ uid }}"
+    label="学号:"
+    left-icon="user-circle-o"
+    placeholder="请输入学号"
+    bind:input="setUid"
+    clearable	="true"
+   />
+  <van-field
+    size="large"
+    value="{{ cid }}"
+    label="课程号:"
+    left-icon="fire"
+    placeholder="请输入课程号"
+    bind:input="setCid"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ cname }}"
+    label="课程名:"
+    left-icon="label"
+    placeholder="请输入课程名"
+    bind:input="setCname"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ tid }}"
+    label="教师号:"
+    left-icon="fire-o"
+    placeholder="请输入教师号"
+    bind:input="setTid"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ xq}}"
+    label="学期:"
+    left-icon="clock"
+    placeholder="请输入学期"
+    bind:input="setXq"
+    clearable	="true"
+   />
+
+   <view class="btns">
+      <button style="background-color: #4547b3;color:white;"  bindtap="gradeupdate" >成绩更新</button>
+      <button  style="background-color: rgb(22, 119, 230);color: white;"  bindtap="submit">提交</button>
+      <button style="background-color: rgb(224, 170, 20);color:white;"  bindtap="search"  block class="btnOpen">成绩查询</button>
+    </view>
+    <view class="divLine"></view>
+</van-cell-group>
+
+<scroll-view scroll-y="true" class="scroll" refresher-enabled="true" bindrefresherrefresh="refresh" bindrefresherabort="refreshAbort">
+  <block wx:for="{{courses}}">
+    <van-cell icon="user-o" use-label-slot="true" size="large">
+
+      <view slot="title">
+        <view class="titleview">
+          <view>
+            <text> {{item.username}} </text>
+          </view>
+        </view>
+      </view>
+
+      <view slot="label" class="detail">
+        <van-icon name="award" size="25rpx" />
+        <text> 学号 : {{item.uid}}\n</text>
+        <van-icon name="label" size="25rpx" />
+        <text> 课程名 : {{item.cname}}\n</text>
+        <van-icon name="fire" size="25rpx" />
+        <text> 课程号 : {{item.cid}}\n</text>
+        <van-icon name="manager" size="25rpx" />
+        <text> 授课老师 : {{item.tid}}\n </text>
+        <van-icon name="clock" size="25rpx" />
+        <text> 学期: {{item.xq}}\n</text>
+      
+        <van-field
+    size="25rpx"
+    data-tid="{{item.tid}}"
+    data-cid="{{item.cid}}"
+    data-xq="{{item.xq}}"
+    data-uid="{{item.uid}}"
+    value="{{ item.score}}"
+    left-icon="diamond"
+    label="当前成绩:"
+    placeholder="请输入分数"
+    bind:blur="setScore"
+    input-align="center"
+    clearable	="true"
+   />
+     
+      </view>
+
+
+    </van-cell>
+  </block>
+
+</scroll-view>

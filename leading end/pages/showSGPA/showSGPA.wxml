@@ -1,0 +1,5 @@
+<!--pages/showSGPA/showSGPA.wxml-->
+<view class="box">
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"  ></ec-canvas>
+   <!-- ec:onInit对应js中的initChart方法，进入页面初始化图标 -->
+</view>

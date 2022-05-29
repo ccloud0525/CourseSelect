@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
+import re
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 import pymysql
@@ -43,6 +44,7 @@ class Loginview(APIView):
 
 class Searchview(APIView):
     def post(self, request, *args, **kwargs):
+        print(request.data)
         queryset = Course.objects.all()
 
         filter_fields = {}
@@ -84,10 +86,28 @@ class Selectview(APIView):
         tid = data['tid']
         xq = data['xq']
         name = User.objects.filter(uid=userid)
-        data_list = List.objects.filter(uid=userid, cid=courseid, taid=tid, xq=xq)
+        data_list = List.objects.filter(uid=userid, cid=courseid, xq=xq)
 
         if len(data_list) != 0:
             return Response({'status': 0})
+
+        data_list = List.objects.filter(uid=userid, xq=xq)
+        pat = re.compile(r'[\u4e00-\u9fa5] [1-12]-[1-12]')
+        time = Course.objects.filter(cid=courseid, taid=tid, xq=xq)[0].time
+        address = Course.objects.filter(cid=courseid, taid=tid, xq=xq)[0].address
+        re2 = pat.findall(time)
+        for i in data_list:
+            itime = Course.objects.filter(cid=i.cid, xq=i.xq, taid=i.taid)[0].time
+            re1 = pat.findall(itime)
+
+            for j in re1:
+                if j in re2:
+                    return Response({'status': 3})
+
+            iaddress = Course.objects.filter(cid=i.cid, xq=i.xq, taid=i.taid)[0].address
+            if address == iaddress:
+                return Response({'status': 4})
+
 
         data_list = Course.objects.filter(cid=courseid, taid=tid, xq=xq)
         data = List.objects.filter(cid=courseid, taid=tid, xq=xq)
@@ -176,22 +196,22 @@ class getMyCoursesview(APIView):
     def post(selfs, request, *args, **kwargs):
         userid = request.data['userid']
         course_list = List.objects.filter(uid=userid)
-
         ret = []
-        for i in course_list:
-            data_list = Course.objects.filter(cid=i.cid, taid=i.taid, xq=i.xq)
-            json_dict = {}
-            json_dict['cname'] = data_list[0].cname
-            json_dict['xf'] = data_list[0].xf
-            json_dict['time'] = data_list[0].time
-            json_dict['xq'] = data_list[0].xq
-            json_dict['teacher'] = data_list[0].teacher
-            json_dict['address'] = data_list[0].address
-            json_dict['volumn'] = data_list[0].volumn
-            json_dict['tid'] = data_list[0].taid
-            json_dict['num'] = data_list[0].num
-            json_dict['cid'] = data_list[0].cid
-            ret.append(json_dict)
+        if len(course_list) != 0:
+            for i in course_list:
+                data_list = Course.objects.filter(cid=i.cid, taid=i.taid, xq=i.xq)
+                json_dict = {}
+                json_dict['cname'] = data_list[0].cname
+                json_dict['xf'] = data_list[0].xf
+                json_dict['time'] = data_list[0].time
+                json_dict['xq'] = data_list[0].xq
+                json_dict['teacher'] = data_list[0].teacher
+                json_dict['address'] = data_list[0].address
+                json_dict['volumn'] = data_list[0].volumn
+                json_dict['tid'] = data_list[0].taid
+                json_dict['num'] = data_list[0].num
+                json_dict['cid'] = data_list[0].cid
+                ret.append(json_dict)
 
         return JsonResponse(ret, safe=False)
 
@@ -298,9 +318,6 @@ class deleteview(APIView):
         return Response({'status': True})
 
 
-
-
-
 class submitview(APIView):
     def post(selfs, request, *args, **kwargs):
         print(request.data)
@@ -351,17 +368,6 @@ class submitview(APIView):
                                       grade=grade)
             else:
                 query.update(score=i['score'], grade=grade)
-
-            # query = Score.objects.filter(uid=i['uid'], cid=cid)
-            # cname = inf[0].cname
-            # xf = inf[0].xf
-            # if len(query) == 0:
-            #     username = User.objects.filter(uid=i['uid'])[0].username
-            #     Score.objects.create(cid=cid, cname=cname, uid=i['uid'], username=username, score=i['score'],
-            #                          xf=xf,
-            #                          grade=grade)
-            # else:
-            #     query.update(score=i['score'], grade=grade)
 
         return Response({'status': True})
 
@@ -630,10 +636,10 @@ class showrankview(APIView):
 
 class grademanageview(APIView):
     def post(self, request, *args, **kwargs):
-        queryset = sScore.objects.all()
+        queryset = List.objects.all()
 
         filter_fields = {}
-        for field in sScore._meta.fields:
+        for field in List._meta.fields:
             parm = request.data.get(field.name, None)
             if parm:
                 filter_fields[field.name] = parm
@@ -651,7 +657,7 @@ class grademanageview(APIView):
                 json_dict['uid'] = i.uid
                 json_dict['username'] = i.username
                 json_dict['score'] = i.score
-                json_dict['xf'] = i.xf
+
                 ret.append(json_dict)
         else:
             return Response({'status': False})

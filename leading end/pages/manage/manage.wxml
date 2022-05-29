@@ -1,0 +1,90 @@
+<!--pages/add/add.wxml-->
+
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
+<view class="word">人员管理</view>
+  <view class="waveWrapperInner bgTop">
+    <image class="wave waveTop" src="../../img/wave-top.png"></image>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <image class="wave waveBottom" src="../../img/wave-bot.png"></image>
+  </view>
+</view>
+
+
+<van-cell-group class="botton">
+  <van-field
+    size="large"
+    value="{{ uid }}"
+    required
+    label="用户id:"
+    placeholder="请输入用户id"
+    bind:input="setUid"
+    left-icon="user-circle-o"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ username}}"
+    required
+    label="用户名:"
+    left-icon="user-o"
+    placeholder="请输入用户名"
+    bind:input="setUsername"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ identity}}"
+    required
+    label="属性:"
+    placeholder="请输入用户属性"
+    left-icon="label-o"
+    bind:input="setIdentity"
+
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ password}}"
+    required
+    label="密码:"
+    placeholder="请输入用户密码"
+    bind:input="setPassword"
+    left-icon="closed-eye"
+    password="true"
+   />
+   <view class="btns">
+      <button style="background-color:#5882FA;color: white;"  bindtap="search" >人员查询</button>
+      <button style="background-color: #dbcf1e;color: white;"  bindtap="register" >人员注册</button>
+      <button style="background-color: #f38841;color:white;"  bindtap="delete" >人员删除</button>
+    </view>
+     <!-- 分割线 -->
+  <view class="divLine"></view>
+ 
+</van-cell-group>
+
+<scroll-view scroll-y="true" class="scroll" refresher-enabled="true" bindrefresherrefresh="refresh" bindrefresherabort="refreshAbort">
+  <block wx:for="{{users}}">
+    <van-cell icon="user-o" use-label-slot="true" size="large">
+
+      <view slot="title">
+        <view class="titleview">
+          <view>
+            <text> {{item.username}} </text>
+          </view>
+        </view>
+      </view>
+
+      <view slot="label" class="detail">
+        <van-icon name="user-circle-o" size="25rpx" />
+        <text> id : {{item.uid}}\n</text>
+        <van-icon name="shield-o" size="25rpx" />
+        <text> 属性: {{item.identity}}\n</text>
+      
+      </view>
+
+
+    </van-cell>
+  </block>
+</scroll-view>
+

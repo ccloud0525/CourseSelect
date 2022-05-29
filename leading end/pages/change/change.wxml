@@ -1,0 +1,96 @@
+<!--pages/add/add.wxml-->
+
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
+<view class="word">课程信息变更</view>
+  <view class="waveWrapperInner bgTop">
+    <image class="wave waveTop" src="../../img/wave-top.png"></image>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <image class="wave waveBottom" src="../../img/wave-bot.png"></image>
+  </view>
+</view>
+
+
+<van-cell-group class="botton">
+  <van-field
+    size="large"
+    value="{{ tid}}"
+    required
+    left-icon="manager"
+    label="教师工号:"
+    placeholder="请输入老师工号"
+    bind:input="setTid"
+    clearable	="true"
+   />
+  <van-field
+    size="large"
+    value="{{ cname }}"
+    required
+    left-icon="label"
+    label="课程名称:"
+    placeholder="请输入课程名称"
+    bind:input="setName"
+    clearable	="true"
+   />
+  <van-field
+    size="large"
+    value="{{ time }}"
+    required
+    left-icon="clock"
+    label="课程时间:"
+    placeholder="请输入星期几 第几节课"
+    maxlength	="20"
+    bind:input="setTime"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ address}}"
+    required
+    left-icon="location"
+    label="上课地点:"
+    placeholder="请输入上课地点"
+    maxlength	="20"
+    bind:input="setAddress"
+    clearable	="true"
+   />
+  <van-field
+    size="large"
+    label = "课程学分:"
+    left-icon="award"
+    required
+    value="{{ xf }}"
+    placeholder="请输入课程学分"
+    bind:input="setXuefen"
+    type= "number"
+    clearable	="true"
+   />
+  <van-field
+    size="large"
+    label = "班级人数:"
+    left-icon="friends"
+    required
+    value="{{ volumn }}"
+    placeholder="请输入班级人数"
+    bind:input="setNum"
+    type= "number"
+    clearable	="true"
+   />
+
+  <van-field
+    size="large"
+    value="{{ desc }}"
+    label="课程简介:"
+    left-icon="column"
+    type="textarea"
+    placeholder="请输入课程简介"
+    required
+    bind:input="setDesc"
+    clearable	="true"
+  />
+
+    <view>
+      <van-button color="#3b87dd"  bindclick="change"  block class="btnOpen">变更</van-button>
+    </view>
+</van-cell-group>
+

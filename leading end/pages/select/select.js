@@ -101,6 +101,7 @@ Page({
             content: '没有该课程',
           })
         } else {
+          console.log(res.data)
           that.setData({
             courses: res.data
           })
@@ -146,7 +147,18 @@ Page({
               title: '提示',
               content: '课程容量已满',
             })
-          } else {
+          }else if(res.data['status'] == 3) {
+            wx.showModal({
+              title: '提示',
+              content: '时间冲突',
+            })
+          }else if(res.data['status'] == 4){
+            wx.showModal({
+              title: '提示',
+              content: '地点冲突',
+            })
+          }
+          else {
             wx.showModal({
               title: '选课成功！'
 

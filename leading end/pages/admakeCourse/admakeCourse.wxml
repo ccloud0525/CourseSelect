@@ -1,0 +1,59 @@
+<!--pages/add/add.wxml-->
+
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
+<view class="word">开设课程组</view>
+  <view class="waveWrapperInner bgTop">
+    <image class="wave waveTop" src="../../img/wave-top.png"></image>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <image class="wave waveBottom" src="../../img/wave-bot.png"></image>
+  </view>
+</view>
+<van-cell-group class="botton">
+  <van-field
+    size="large"
+    value="{{ cid }}"
+    required
+    left-icon="fire"
+    label="课程号:"
+    placeholder="请输入课程号"
+    bind:input="setCid"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ cname }}"
+    required
+    left-icon="label"
+    label="课程名:"
+    placeholder="请输入课程名"
+    bind:input="setCname"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ xq }}"
+    required
+    label="学期:"
+    left-icon="clock"
+    placeholder="请输入学期"
+    maxlength	="20"
+    bind:input="setXq"
+    clearable	="true"
+   />
+  <van-field
+    size="large"
+    required
+    value="{{ xf }}"
+    label="学分:"
+    left-icon="award"
+    type="textarea"
+    placeholder="请输入学分"
+    bind:input="setXf"
+    clearable	="true"
+  />
+
+    <view>
+      <van-button color="#3b87dd"  bindclick="handleOpen"  block class="btnOpen">开设</van-button>
+    </view>
+</van-cell-group>

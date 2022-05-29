@@ -1,0 +1,18 @@
+
+<view class="today">
+  <view class="info">
+    <view class="temp">  {{today.wendu}}℃</view>
+    <view class="weather">{{today.todayInfo.type}} {{today.todayInfo.fengxiang}}</view>
+    <view >友情提示：{{today.ganmao}}</view>
+    <view class="city">{{city}}</view>
+  </view>
+</view>
+
+<van-cell size="large" is-link icon="add" title="开设课程组" bind:click="admake"/>
+<van-cell size="large" is-link icon="setting" title="课程组管理" bind:click="coursemanage"/>
+<van-cell size="large" is-link icon="cluster" title="开设课程班" bind:click="adopen"/>
+<van-cell size="large" is-link icon="bars" title="课程班管理" bind:click="todelete"/>
+<van-cell size="large" is-link icon="diamond" title="成绩管理" bind:click="grade"/>
+<van-cell size="large" is-link icon="manager" title="人员管理" bind:click="manage"/>
+<van-cell size="large" is-link icon="star" title="创作团队信息" bind:click	='author' />
+

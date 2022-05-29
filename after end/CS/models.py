@@ -21,18 +21,18 @@ class List(models.Model):
 
 class CourseTemplate(models.Model):
     cid = models.CharField(max_length=20,primary_key=True)
-    cname = models.CharField(max_length=20)
+    cname = models.CharField(max_length=40)
     xf = models.CharField(max_length=4)
     xq = models.CharField(max_length=20)
 
 class Course(models.Model):
     id = models.AutoField(primary_key=True)
     cid = models.CharField(max_length=20)
-    cname = models.CharField(max_length=20)
+    cname = models.CharField(max_length=40)
     xf = models.CharField(max_length=4)
     address = models.CharField(max_length=20)
-    time = models.CharField(max_length=15)
-    desc = models.CharField(max_length=50)
+    time = models.CharField(max_length=40)
+    desc = models.CharField(max_length=200)
     teacher = models.CharField(max_length=20)
     taid = models.CharField(max_length=20)
     xq = models.CharField(max_length=20)
@@ -42,7 +42,7 @@ class Course(models.Model):
 class Score(models.Model):
     id = models.AutoField(primary_key=True)
     cid = models.CharField(max_length=20)
-    cname = models.CharField(max_length=20)
+    cname = models.CharField(max_length=40)
     uid = models.CharField(max_length=8)
     repeat = models.BooleanField(default=False)
     username = models.CharField(max_length=20, default='')
@@ -53,7 +53,7 @@ class Score(models.Model):
 class sScore(models.Model):
     id = models.AutoField(primary_key=True)
     cid = models.CharField(max_length=20)
-    cname = models.CharField(max_length=20)
+    cname = models.CharField(max_length=40)
     uid = models.CharField(max_length=8)
     username = models.CharField(max_length=20, default='')
     score = models.IntegerField()

@@ -1,0 +1,17 @@
+<!--pages/rollOfCertainCourse/rollOfCertainCourse.wxml-->
+
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
+  <view class="word">学生名单</view>
+  <view class="waveWrapperInner bgTop">
+    <image class="wave waveTop" src="../../img/wave-top.png"></image>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <image class="wave waveBottom" src="../../img/wave-bot.png"></image>
+  </view>
+</view>
+
+<view class="detail" wx:for="{{rollList}}" wx:key="id">
+  <van-icon name="manager" size="25rpx"/>
+  <text class="uid">学号：{{item.uid}}</text>
+  <text class="name">姓名：{{item.username}}\n</text>
+</view>

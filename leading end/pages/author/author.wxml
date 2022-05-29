@@ -25,7 +25,7 @@
             <van-icon name="manager" size="25rpx" />
             <text> 技术负责：项目架构把控，后端开发\n </text>
             <van-icon name="award" size="25rpx" />
-            <text> 使用工具 : 微信开发者工具,Pycharm,MySQL\n</text>
+            <text> 使用工具 : 微信开发者工具,Pycharm,MySQL,Navicat\n</text>
         </view>
       
     </van-cell>
@@ -42,7 +42,7 @@
             <van-icon name="star" size="25rpx" />
             <text> 工号：19120179\n </text>
             <van-icon name="manager" size="25rpx" />
-            <text> 技术负责：前端开发\n </text>
+            <text> 技术负责：前端设计,开发\n </text>
             <van-icon name="award" size="25rpx" />
             <text> 使用工具 : 微信开发者工具\n</text>
         </view>
@@ -63,29 +63,11 @@
             <van-icon name="manager" size="25rpx" />
             <text> 技术负责：需求分析，数据库设计\n </text>
             <van-icon name="award" size="25rpx" />
-            <text> 使用工具 : starUML,MySQL,Excel\n</text>
+            <text> 使用工具 : starUML,OpenGauss,Navicat\n</text>
         </view>
       
     </van-cell>
 
-    <van-cell icon="label-o" use-label-slot="true" size="large">
-        <view slot="title">
-            <view class="titleview">
-                <view>
-                    <text>马陈鸣 </text>
-                </view>
-            </view>
-        </view>
-
-        <view slot="label" class="detail">
-            <van-icon name="star" size="25rpx" />
-            <text> 工号：19120205\n </text>
-            <van-icon name="manager" size="25rpx" />
-            <text> 技术负责：前端设计，开发\n </text>
-            <van-icon name="award" size="25rpx" />
-            <text> 使用工具 : 微信开发者工具\n</text>
-        </view>
-      
-    </van-cell>
+    
 
 </scroll-view>

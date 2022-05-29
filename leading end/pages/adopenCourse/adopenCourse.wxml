@@ -1,0 +1,96 @@
+<!--pages/add/add.wxml-->
+
+<view class="waveWrapper waveAnimation" style='background-color:{{evening}}'>
+<view class="word">开设课程班</view>
+  <view class="waveWrapperInner bgTop">
+    <image class="wave waveTop" src="../../img/wave-top.png"></image>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <image class="wave waveBottom" src="../../img/wave-bot.png"></image>
+  </view>
+</view>
+
+
+<van-cell-group class="botton">
+  <van-field
+    size="large"
+    value="{{ tid}}"
+    required
+    left-icon="manager"
+    label="教师号:"
+    placeholder="请输入教师号"
+    bind:input="setTid"
+    clearable	="true"
+   />
+  <van-field
+    size="large"
+    value="{{ cid }}"
+    required
+    left-icon="fire"
+    label="课程号:"
+    placeholder="请输入课程号"
+    bind:input="setCid"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ xq }}"
+    required
+    left-icon="clock"
+    label="学期:"
+    placeholder="请输入学期"
+    maxlength	="20"
+    bind:input="setXq"
+    clearable	="true"
+   />
+  <van-field
+    size="large"
+    value="{{ time }}"
+    left-icon="clock-o"
+    required
+    label="课程时间:"
+    placeholder="请输入星期几 第几节课"
+    maxlength	="20"
+    bind:input="setTime"
+    clearable	="true"
+   />
+   <van-field
+    size="large"
+    value="{{ address}}"
+    required
+    left-icon="location"
+    label="上课地点:"
+    placeholder="请输入上课地点"
+    maxlength	="20"
+    bind:input="setAddress"
+    clearable	="true"
+   />
+
+  <van-field
+    size="large"
+    label = "班级人数:"
+    required
+    left-icon="friends"
+    value="{{ volumn }}"
+    placeholder="请输入班级人数"
+    bind:input="setNum"
+    type= "number"
+    clearable	="true"
+   />
+
+  <van-field
+    size="large"
+    value="{{ desc }}"
+    label="课程简介:"
+    type="textarea"
+    left-icon="column"
+    placeholder="请输入课程简介"
+    required
+    bind:input="setDesc"
+    clearable	="true"
+  />
+
+    <view>
+      <van-button color="#3b87dd"  bindclick="handleOpen"  block class="btnOpen">开课</van-button>
+    </view>
+</van-cell-group>
